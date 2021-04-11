@@ -13,7 +13,7 @@ jobs:
         with:
           submodules: true
       - run: sudo apt-get update && sudo apt-get install libboost-test-dev -y
-      - run: build/cmake .
+      - run: cmake build/
       - run: build/make
       - run: build/hello
       - name: Create Release
@@ -33,6 +33,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./hello
+          asset_path: build/hello
           asset_name: hello
           asset_content_type: application/vnd.debian.binary-package
