@@ -15,7 +15,7 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install libboost-test-dev -y
       - run: cmake .
       - run: make
-      - run: ./helloworld_cli
+      - run: ./helloworld_exe
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -33,6 +33,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: helloworld_cli
-          asset_name: helloworld_cli
+          asset_path: helloworld_exe
+          asset_name: helloworld_exe
           asset_content_type: application/vnd.debian.binary-package
